@@ -2,6 +2,7 @@
     // Code de première isntance avec initialisation des données
     $firstname = $name = $email = $phone = $message = "";
     $firstnameError = $nameError = $emailError = $phoneError = $messageError = "";
+    $isSuccess = false;
 
     // Code de la deuxième instance
     if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -10,21 +11,30 @@
         $email = verifyInput($_POST['email']);
         $phone = verifyInput($_POST['phone']);
         $message = verifyInput($_POST['message']);
+        $isSuccess = true;
 
         if(empty($firstname)) {
             $firstnameError = "Merci de m'indiquer ton prénom";
+            $isSuccess = false;
         }
         if (empty($name)) {
             $nameError = "Merci de m'indiquer ton nom";
+            $isSuccess = false;
         }
         if(empty($message)) {
             $messageError = "Votre message est vide, merci de remplir ce champ";
+            $isSuccess = false;
         }
         if(!isEmail($email)) {
             $emailError = "Merci d'indiquer une adresse email valide";
+            $isSuccess = false;
         }
         if(!isPhone($phone)) {
             $phoneError = "Merci d'indiquer un numéro de téléphone valide (chiffres et espaces uniquement)";
+            $isSuccess = false;
+        }
+        if($isSuccess) {
+            // envoi de l'email
         }
     }
 
@@ -154,7 +164,12 @@
                     <input type="submit" class="button1" value="Envoyer">
                 </div>    
             </div>
-            <p id="thank-you">Votre message a bien été envoyé. Merci de m'avoir contacté :)</p>
+            <p 
+                id="thank-you" 
+                style="display: <?php if($isSuccess) echo 'block'; else echo 'none'; ?>"
+            >
+                Votre message a bien été envoyé. Merci de m'avoir contacté :)
+            </p>
         </form>
     </div>
 </body>
