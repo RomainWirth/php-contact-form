@@ -25,6 +25,8 @@
     <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/style.css">
 
+    <script src="./js/script.js"></script>
+    <!-- php -->
     <title>Formulaire de contact</title>
 </head>
 <body>
@@ -36,7 +38,7 @@
         <form 
             id="contact-form" 
             method="post" 
-            action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" 
+            action="" 
             role="form"
         >
             <div class="row">
@@ -48,9 +50,8 @@
                         name="firstname" 
                         class="form-control" 
                         placeholder="Votre prénom" 
-                        value="<?php echo $firstname; ?>"
                     >
-                    <p class="comments"><?php echo $firstnameError ?></p>
+                    <p class="comments"></p>
                 </div>
                 <div class="col-lg-6">
                     <label for="name" class="form-label">Nom <span class="blue">*</span></label>
@@ -60,9 +61,8 @@
                         name="name" 
                         class="form-control" 
                         placeholder="Votre Nom"
-                        value="<?php echo $name; ?>"
                     >
-                    <p class="comments"><?php echo $nameError ?></p>
+                    <p class="comments"></p>
                 </div>
                 <div class="col-lg-6">
                     <label for="email" class="form-label">Email <span class="blue">*</span></label>
@@ -72,9 +72,8 @@
                         name="email" 
                         class="form-control" 
                         placeholder="Votre Email"
-                        value="<?php echo $email; ?>"
                     >
-                    <p class="comments"><?php echo $emailError ?></p>
+                    <p class="comments"></p>
                 </div>
                 <div class="col-lg-6">
                     <label for="phone" class="form-label">Téléphone</label>
@@ -84,9 +83,8 @@
                         name="phone" 
                         class="form-control" 
                         placeholder="Votre Téléphone"
-                        value="<?php echo $phone; ?>"
                     >
-                    <p class="comments"><?php echo $phoneError ?></p>
+                    <p class="comments"></p>
                 </div>
                 <div>
                     <label for="message" class="form-label">Message <span class="blue">*</span></label>
@@ -97,9 +95,8 @@
                         placeholder="Votre Message" 
                         rows="4"
                     >
-                        <?php echo $message; ?>
                     </textarea>
-                    <p class="comments"><?php echo $messageError ?></p>
+                    <p class="comments"></p>
                 </div>
                 <div>
                     <p class="blue"><strong>* Ces informations sont requises.</strong></p>
@@ -108,12 +105,6 @@
                     <input type="submit" class="button1" value="Envoyer">
                 </div>    
             </div>
-            <p 
-                id="thank-you" 
-                style="display: <?php if($isSuccess) echo 'block'; else echo 'none'; ?>"
-            >
-                Votre message a bien été envoyé. Merci de m'avoir contacté :)
-            </p>
         </form>
     </div>
 </body>
